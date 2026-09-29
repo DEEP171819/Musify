@@ -62,6 +62,10 @@ app.post('/addsong/:playid/:song_id',isAuth,async(req,res)=>{
     })
 })
 
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'UP' });
+});
+
 app.get('/', isAuth,async(req, res) => {
     const user = await User.findById(req.user._id);
     res.render('home',{
